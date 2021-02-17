@@ -1,0 +1,33 @@
+<div class="container">
+    <h5>Sınav oluşturmak için bilgileri eksiksiz doldurunuz.</h5>
+    <hr>
+    <form action="/exams/test" method="POST">
+    <div class="row form-bilgi">
+        <div class="col-md-3">
+            <label for="formGroupExampleInput" class="form-label">Sınav Adı</label>
+            <input type="text" class="form-control" name="dersAdi" placeholder="">
+        </div>
+        <div class="col-md-2">
+            <label for="formGroupExampleInput" class="form-label">Başlangıç Tarihi</label>
+            <input type="text" class="form-control" name="tarih" placeholder="">
+        </div>
+        <div class="col-md-2">
+            <label for="formGroupExampleInput" class="form-label">Bitiş Tarihi</label>
+            <input type="text" class="form-control" name="tarihL" placeholder="">
+        </div>
+        <div class="col-md-1">
+            <label for="formGroupExampleInput" class="form-label">Süre</label>
+            <input type="text" class="form-control" name="sure" placeholder="">
+        </div>
+
+        <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-lg submit">Sınavı Oluştur</button>
+        </div>
+
+
+    </div>
+    </form>  
+
+
+
+</div>

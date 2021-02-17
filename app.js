@@ -1,58 +1,50 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express')
+const path = require('path')
+const app = express()
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+const exphbs  = require('express-handlebars')
+const port = 3000
+const hostname = '127.0.0.1'
+const moMent = require('moment')
+const CONNECTION_URL = "mongodb+srv://alisaribas:cpro123@cpro.0cuh4.mongodb.net/<dbname>?retryWrites=true&w=majority"
 
-var hbs = require('hbs');
-var session = require('express-session');
-
-var index = require('./routes/index');
-
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-hbs.registerPartials(__dirname + '/views/partials');
-app.set('view engine', 'hbs');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(session({
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: true
-}))
-app.use(express.static(path.join(__dirname, 'public')));
-
-// res.locals is an object passed to hbs engine
-app.use(function(req, res, next) {
-    res.locals.session = req.session;
-    next();
+mongoose.connect(CONNECTION_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
 });
 
-app.use('/', index);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+app.use(express.static('public'))
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+const hbs = exphbs.create({     // tarih dönüşümleri için handlebars helper tanımlaması
+  helpers: {
+    generateDate : (date,format) => {
+      return moMent(date).format(format)  // moment paketi kullanıldı
+    }
+  }
+})
 
-module.exports = app;
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
+
+
+
+const main = require('./routes/main')
+
+
+app.use('/',main)
+
+
+app.listen(port, hostname , () => {
+    console.log(`server running http://${hostname}:${port}/`);
+})
+

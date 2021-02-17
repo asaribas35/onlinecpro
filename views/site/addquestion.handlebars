@@ -1,0 +1,60 @@
+<div class="container">
+    {{!-- <h1>{{exam._id}}</h1> --}}
+        <div class="form-sorular">
+        <h5>Soruları ve cevapları yazınız</h5>
+
+        <div>Soru</div>
+        <form action="/questions/test" method="POST">
+            <div class="row " >
+            <div class="col-md-6">
+                <label for="exampleFormControlTextarea1" class="form-label"></label>
+                <textarea name="soruText" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+            </div>
+            <div class="col-md-3 cevaplar">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label"></label>
+                    <input name="sikA" type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="A">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label"></label>
+                    <input name="sikC" type="text" class="form-control" id="formGroupExampleInput2"
+                        placeholder="C">
+                </div>
+            </div>
+                <div class="col-md-3 cevaplar">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label"></label>
+                    <input name="sikB" type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="B">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label"></label>
+                    <input name="sikD" type="text" class="form-control" id="formGroupExampleInput2"
+                        placeholder="D">
+                </div>
+            </div>
+         </div>
+         <hr>
+            <div class="row">
+            <div class="col-md-1 ">
+                <a ><button  type="submit" class="btn btn-danger addButton">Ekle</button></a>
+            </div>
+              <div class="col-md-1">
+                <a class="btn btn-secondary" href="/">Bitir</a>
+            </div>
+             </div>
+            <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label"></label>
+                    <input name="dersId" type="hidden" class="form-control" id="formGroupExampleInput2"
+                        value="{{exam._id}}">
+                </div>
+        </form>
+        
+
+    </div>
+
+    
+
+       
+</div>

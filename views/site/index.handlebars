@@ -1,0 +1,38 @@
+        <div class="container">
+          <div class="row ">
+            <div class="navbar-brand mb-0 h1 col-md-1">kwi</div>
+            <div class="form col-md-6">
+                <label for="searchForm" class="form-label"><button  type="button" class="btn btn-dark butonS">Search</button></label>
+                <input   type="text" class="form-control " id="searchForm" placeholder="Search"/>
+            </div>
+
+            <div class="buttons col-md-2">
+               <a href="/signup"><button type="button" class="btn btn-danger buton1">Sign Up</button></a> 
+               <a href="/login"><button type="button" class="btn btn-light buton2">Login</button></a> 
+            </div>
+          </div>
+        </div>
+        <hr></hr>
+
+
+        {{#each exams}}
+        
+        <div class="container">
+          <div class="row">
+                <div class="card examCard" >
+                    <div class="card-body">
+                        <h5 class="card-title">{{dersAdi}} </h5>
+                        <p class="card-text"> {{sure}} Dakika &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tarih : 
+                          {{generateDate tarih 'DD MMM YYYY'}}&nbsp;&nbsp;-&nbsp;&nbsp;{{generateDate tarihL 'DD MMM YYYY'}} </p>
+                    </div>
+                     <div class="buttonEkle">
+                        <a href="/addexam/addquestion/{{_id}}"><button  type="submit" class="btn btn-danger buton1">Soru ekle</button></a>
+                    </div>
+                    <div class="button">
+                        <a href="/exampage/{{_id}}"><button  type="submit" class="btn btn-danger buton1">Start</button></a>
+                    </div>
+                </div>
+          </div>
+        </div>
+        
+        {{/each}}

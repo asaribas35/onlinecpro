@@ -1,0 +1,51 @@
+{{#each question}}
+    <div class="container">
+        <div class="row">
+                 <div className="card cardQuestion">
+                        <p className="question"> {{soruText}}</p>
+    
+                         
+                          <div className="answer">
+                            <fieldset>
+                             <div className="choices form-check">
+                                    <input className="form-check-input" type="radio" name="{{soruText}}" id="flexRadioDefault1"/>
+                                   <label className="form-check-label" for="flexRadioDefault">
+                                       A)  {{sikA}}
+                                   </label>
+                            </div>
+                             <div className="choices form-check">
+                                    <input className="form-check-input" type="radio" name="{{soruText}}"  id="flexRadioDefault1"/>
+                                   <label className="form-check-label" for="flexRadioDefault">
+                                      B)  {{sikB}}
+                                   </label>
+                            </div>                               
+                             <div className="choices form-check">
+                                    <input className="form-check-input" type="radio" name="{{soruText}}"  id="flexRadioDefault1"/>
+                                   <label className="form-check-label" for="flexRadioDefault">
+                                      C)  {{sikC}}
+                                   </label>
+                            </div>
+                              <div className="choices form-check">
+                                    <input className="form-check-input" type="radio" name="{{soruText}}"  id="flexRadioDefault1"/>
+                                   <label className="form-check-label" for="flexRadioDefault">
+                                      D)  {{sikD}}
+                                   </label>
+                            </div>   
+                            </fieldset>                            
+                         </div>
+                          
+                    </div>
+                    <hr>
+        </div>
+    </div>
+
+{{/each}}
+      <div class="container">
+         <div class="row">
+             <div class="col-md-1 ">
+                <a href="/"><button  type="submit" class="btn btn-danger ">Sınavı Tamamla</button></a>
+            </div>     
+         </div>             
+      </div>
+
+
